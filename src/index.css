@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: Archivo;
+  src: url(/Archivo_Condensed-Italic.ttf);
+}
+
+body,html{
+  font-family: Archivo;
+  color: #F1F1F1;
+  background-color: #000;
+}
