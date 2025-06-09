@@ -162,11 +162,14 @@ const App = () => {
   ];
 
   const [CurrentGif, setCurrentGif] = useState(gifList[0])
+  const [fade, setFade] = useState(true); // For smooth transition
   
     useEffect(() => {
     const interval = setInterval(() => {
+      setFade(false); // Start fade-out
       const randomIndex = Math.floor(Math.random() * gifList.length);
-      setCurrentGif(gifList[randomIndex]);
+      setCurrentGif(gifList[randomIndex]); // Change gif
+      setFade(true); // Start fade-in
     }, 3000); // Change every 3 seconds
 
     return () => clearInterval(interval); // Cleanup on unmount
@@ -197,7 +200,14 @@ const App = () => {
 
     {/* Main Page */}
     <div className="main-page absolute top-0 left-0 z-[-1] w-full h-screen flex flex-col items-center px-5 py-8">
-      <img key={CurrentGif} className='w-30 rounded-full border border-zinc-400 bg-zinc-400' src={CurrentGif} alt="heartHappy" />
+      <div className='flex items-center justify-center bg-black'>
+      <img
+        key={CurrentGif}
+        className={`w-30 rounded-full border border-zinc-400 bg-zinc-400 transition-opacity duration-300 ${fade ? 'opacity-100' : 'opacity-0'}`}
+        src={CurrentGif}
+        alt="heartHappy"
+      />
+    </div>
       <h2 className='mt-6 text-3xl font-semibold'>Hai, {UserName && `${UserName}`}✨</h2>
 
       {/* Card Container */}
