@@ -197,7 +197,7 @@ const App = () => {
 
     {/* Main Page */}
     <div className="main-page absolute top-0 left-0 z-[-1] w-full h-screen flex flex-col items-center px-5 py-8">
-      <img className='w-30 rounded-full border border-zinc-400 bg-zinc-400' src={CurrentGif} alt="heartHappy" />
+      <img key={CurrentGif} className='w-30 rounded-full border border-zinc-400 bg-zinc-400' src={CurrentGif} alt="heartHappy" />
       <h2 className='mt-6 text-3xl font-semibold'>Hai, {UserName && `${UserName}`}✨</h2>
 
       {/* Card Container */}
